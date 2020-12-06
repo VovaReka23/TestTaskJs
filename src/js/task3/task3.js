@@ -35,7 +35,6 @@ export function Task3() {
         const div = document.createElement('div');
         div.textContent = field;
         div.classList.add(field.toLocaleLowerCase(), 'table-item');
-        div.setAttribute("id", field.toLocaleLowerCase());
         row.appendChild(div)
     });
     fragmant.appendChild(table);
@@ -44,9 +43,15 @@ export function Task3() {
         e.preventDefault();
         const row =  document.createElement('div');
         row.classList.add('row');
+        fields.forEach(function (field) {
+            const div = document.createElement('div');
+            const valueField = field.toLocaleLowerCase() + "";
+            div.textContent = fragmant.ownerDocument.all.namedItem(`${valueField}`).value;
+            div.classList.add(field.toLocaleLowerCase(), 'table-item');
+            row.appendChild(div)
+        });
         table.appendChild(row)
     }
-
-    button.addEventListener("submit",  (e) => addToTable(e));
+    button.addEventListener("click",  (e) => addToTable(e));
     element.appendChild(fragmant);
 }
