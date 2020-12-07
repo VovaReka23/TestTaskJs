@@ -18,7 +18,7 @@ export function Task3() {
     });
     const button = document.createElement('button');
     button.textContent = 'Add to table';
-    button.setAttribute("type", 'submit');;
+    button.setAttribute("type", 'submit');
     form.appendChild(button);
     fragmant.appendChild(form);
 
@@ -48,6 +48,9 @@ export function Task3() {
             const valueField = field.toLocaleLowerCase() + "";
             div.textContent = fragmant.ownerDocument.all.namedItem(`${valueField}`).value;
             div.classList.add(field.toLocaleLowerCase(), 'table-item');
+            if (field.toLocaleLowerCase() == 'date') {
+                div.setAttribute("contenteditable", 'true');
+            }
             row.appendChild(div)
         });
         table.appendChild(row)
